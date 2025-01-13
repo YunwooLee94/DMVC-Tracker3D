@@ -1,0 +1,6 @@
+is_unstructured: true
+num_thread: 4
+num_sample: 1000
+horizon: 1.0
+object_size: 0.075
+acc_max_target: 0.5

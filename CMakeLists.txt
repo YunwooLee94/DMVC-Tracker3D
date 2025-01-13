@@ -36,9 +36,12 @@ catkin_package(
 file(GLOB DMVC_UTILS_SRC src/dmvc_utils3d/bernstein_util.cpp src/dmvc_utils3d/Utils.cpp)
 file(GLOB DMVC_SIMULATOR3D_SRC src/dmvc_simulator3d/*.cpp)
 #
-#file(GLOB DMVC_PREDICTOR_SRC src/dmvc_predictor/Predictor.cpp src/dmvc_predictor/PredictionVisualizer.cpp)
+file(GLOB DMVC_PREDICTOR3D_SRC src/dmvc_predictor3d/Predictor.cpp src/dmvc_predictor3d/PredictionVisualizer.cpp)
 #file(GLOB DMVC_TRACKER_SRC src/dmvc_tracker/PlannerBase.cpp src/dmvc_tracker/Tracker.cpp src/dmvc_tracker/PlanningVisualizer.cpp src/dmvc_tracker/RosWrapper.cpp src/dmvc_tracker/Wrapper.cpp)
 #file(GLOB DMVC_REPLAYER_SRC src/dmvc_replay/Replayer.cpp)
 
 add_executable(dmvc_simulator3d exe/main_simulator3d.cpp ${DMVC_SIMULATOR3D_SRC} ${DMVC_UTILS_SRC})
 target_link_libraries(dmvc_simulator3d ${catkin_LIBRARIES} -lstdc++fs)
+
+add_executable(dmvc_predictor3d exe/main_predictor3d.cpp ${DMVC_PREDICTOR3D_SRC} ${DMVC_UTILS_SRC})
+target_link_libraries(dmvc_predictor3d ${catkin_LIBRARIES} -lstdc++fs)

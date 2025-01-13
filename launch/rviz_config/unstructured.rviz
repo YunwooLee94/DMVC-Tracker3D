@@ -118,11 +118,53 @@ Visualization Manager:
     - Class: rviz/MarkerArray
       Enabled: true
       Marker Topic: /dmvc_simulator3d/tracker_list_vis
-      Name: MarkerArray
+      Name: TrackerList
       Namespaces:
         Tracker: true
       Queue Size: 100
       Value: true
+    - Class: rviz/Group
+      Displays:
+        - Alpha: 0.20000000298023224
+          BoundColor: 255; 0; 0
+          Class: decomp_rviz_plugins/PolyhedronArray
+          Enabled: true
+          MeshColor: 255; 0; 255
+          Name: TargetCorridor
+          Queue Size: 10
+          Scale: 0.10000000149011612
+          State: Mesh
+          Topic: /dmvc_predictor3d/corridor
+          Unreliable: false
+          Value: true
+          VsColor: 0; 255; 0
+          VsScale: 1
+        - Class: rviz/MarkerArray
+          Enabled: true
+          Marker Topic: /dmvc_predictor3d/TargetFeasiblePrimitive
+          Name: TargetFeasible
+          Namespaces:
+            {}
+          Queue Size: 100
+          Value: true
+        - Class: rviz/Marker
+          Enabled: true
+          Marker Topic: /dmvc_predictor3d/TargetBestPrimitive
+          Name: TargetBest
+          Namespaces:
+            TARGET_BEST: true
+          Queue Size: 100
+          Value: true
+        - Class: rviz/MarkerArray
+          Enabled: true
+          Marker Topic: /dmvc_predictor3d/TargetRawPrimitive
+          Name: TargetRaw
+          Namespaces:
+            {}
+          Queue Size: 100
+          Value: true
+      Enabled: true
+      Name: Target
   Enabled: true
   Global Options:
     Background Color: 255; 255; 255

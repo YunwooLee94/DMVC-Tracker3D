@@ -10,4 +10,9 @@
         <param name="object_history_file_name" value="$(find dmvc_tracker3d)/world/unstructured/target_history_10agent.csv"/>
         <param name="initial_state_file_name" value="$(find dmvc_tracker3d)/world/unstructured/initial_trajectory_10agent.txt"/>
     </node>
+
+    <node pkg="dmvc_tracker3d" type="dmvc_predictor3d" name="dmvc_predictor3d" output="screen">
+        <rosparam command="load" file="$(find dmvc_tracker3d)/param/unstructured/prediction_visualizer_10agent.yaml"/>
+        <rosparam command="load" file="$(find dmvc_tracker3d)/param/unstructured/predictor_10agent.yaml"/>
+    </node>
 </launch>
