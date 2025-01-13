@@ -439,6 +439,18 @@ void dmvc3d::Simulator::UpdateDynamics(const double &t) {
             current_obstacle_state_list_.push_back(temp_state);
         }
     }
+    static double t_prev = t;
+    double dt = t - t_prev;
+    for (int i = 0; i < tracker_number_; i++) {
+        current_tracker_state_[i].px = current_tracker_state_[i].px + current_tracker_state_[i].vx * dt;
+        current_tracker_state_[i].py = current_tracker_state_[i].py + current_tracker_state_[i].vy * dt;
+        current_tracker_state_[i].pz = current_tracker_state_[i].pz + current_tracker_state_[i].vz * dt;
+        current_tracker_state_[i].vx = current_tracker_state_[i].vx + tracker_control_input[i].ax * dt;
+        current_tracker_state_[i].vy = current_tracker_state_[i].vy + tracker_control_input[i].ay * dt;
+        current_tracker_state_[i].vz = current_tracker_state_[i].vz + tracker_control_input[i].az * dt;
+    }
+    t_prev = t;
+
 }
 
 void dmvc3d::Simulator::ShuffleScenario() {
