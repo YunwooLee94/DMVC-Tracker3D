@@ -458,7 +458,17 @@ void dmvc3d::Simulator::ShuffleScenario() {
 }
 
 void dmvc3d::Simulator::control_input_callback(const dmvc_tracker3d::ControlInputList &msg) {
-
+    for (int i = 0; i < tracker_number_; i++) {
+        tracker_control_input[i].px = msg.control_input_list[i].px;
+        tracker_control_input[i].py = msg.control_input_list[i].py;
+        tracker_control_input[i].pz = msg.control_input_list[i].pz;
+        tracker_control_input[i].vx = msg.control_input_list[i].vx;
+        tracker_control_input[i].vy = msg.control_input_list[i].vy;
+        tracker_control_input[i].vz = msg.control_input_list[i].vz;
+        tracker_control_input[i].ax = msg.control_input_list[i].ax;
+        tracker_control_input[i].ay = msg.control_input_list[i].ay;
+        tracker_control_input[i].az = msg.control_input_list[i].az;
+    }
 }
 
 void dmvc3d::Simulator::ProcessPointCloud() {

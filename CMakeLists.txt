@@ -6,16 +6,16 @@ set(CMAKE_BUILD_TYPE Release)
 #set(CMAKE_BUILD_TYPE Debug)
 
 find_package(catkin REQUIRED COMPONENTS
-  decomp_ros_utils
-  decomp_util
-  geometry_msgs
-  nav_msgs
-  pcl_conversions
-  roscpp
-  std_msgs
-  tf
-  visualization_msgs
-)
+        decomp_ros_utils
+        decomp_util
+        geometry_msgs
+        nav_msgs
+        pcl_conversions
+        roscpp
+        std_msgs
+        tf
+        visualization_msgs
+        )
 
 include_directories(include ${catkin_INCLUDE_DIRS} ${EIGEN3_INCLUDE_DIRS} ${DECOMP_UTIL_INCLUDE_DIRS})
 find_package(Boost REQUIRED COMPONENTS thread)
@@ -37,7 +37,7 @@ file(GLOB DMVC_UTILS_SRC src/dmvc_utils3d/bernstein_util.cpp src/dmvc_utils3d/Ut
 file(GLOB DMVC_SIMULATOR3D_SRC src/dmvc_simulator3d/*.cpp)
 #
 file(GLOB DMVC_PREDICTOR3D_SRC src/dmvc_predictor3d/Predictor.cpp src/dmvc_predictor3d/PredictionVisualizer.cpp)
-#file(GLOB DMVC_TRACKER_SRC src/dmvc_tracker/PlannerBase.cpp src/dmvc_tracker/Tracker.cpp src/dmvc_tracker/PlanningVisualizer.cpp src/dmvc_tracker/RosWrapper.cpp src/dmvc_tracker/Wrapper.cpp)
+file(GLOB DMVC_TRACKER3D_SRC src/dmvc_tracker3d/PlannerBase.cpp src/dmvc_tracker3d/Tracker.cpp src/dmvc_tracker3d/PlanningVisualizer.cpp src/dmvc_tracker3d/RosWrapper.cpp src/dmvc_tracker3d/Wrapper.cpp)
 #file(GLOB DMVC_REPLAYER_SRC src/dmvc_replay/Replayer.cpp)
 
 add_executable(dmvc_simulator3d exe/main_simulator3d.cpp ${DMVC_SIMULATOR3D_SRC} ${DMVC_UTILS_SRC})
@@ -45,3 +45,6 @@ target_link_libraries(dmvc_simulator3d ${catkin_LIBRARIES} -lstdc++fs)
 
 add_executable(dmvc_predictor3d exe/main_predictor3d.cpp ${DMVC_PREDICTOR3D_SRC} ${DMVC_UTILS_SRC})
 target_link_libraries(dmvc_predictor3d ${catkin_LIBRARIES} -lstdc++fs)
+
+add_executable(dmvc_tracker3d exe/main_tracker3d.cpp ${DMVC_TRACKER3D_SRC} ${DMVC_UTILS_SRC})
+target_link_libraries(dmvc_tracker3d ${catkin_LIBRARIES} -lstdc++fs)
