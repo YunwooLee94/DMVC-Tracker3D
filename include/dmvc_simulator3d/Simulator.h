@@ -46,6 +46,7 @@ namespace dmvc3d{
         vector<int> obstacle_idx_list_;
 
         pcl::PointCloud<pcl::PointXYZ> point_cloud_;
+        pcl::PointCloud<pcl::PointXYZ> point_cloud_range_;
 
         vector<StateHistory> object_history_list_;
         vector<State> current_tracker_state_;
@@ -64,6 +65,7 @@ namespace dmvc3d{
         void UpdateDynamics(const double &t);
         void PrepareRosMsgs(const double &t);
         void PublishRosMsgs();
+        void ProcessPointCloud();
 //        std::vector<int> generateUniqueRandomArray(int size, int lower_bound, int upper_bound);
 
         visualization_msgs::MarkerArray obstacle_list_vis_;
