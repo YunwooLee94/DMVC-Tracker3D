@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="rviz_display" default="true"/>
+    <group if = "$(arg rviz_display)">
+        <node name="rviz" pkg="rviz" type="rviz" args="-d $(find dmvc_tracker3d)/launch/rviz_config/unstructured.rviz" output="log"/>
+    </group>
+    <node pkg="dmvc_tracker3d" type="dmvc_simulator3d" name="dmvc_simulator3d" output="screen">
+<!--        <rosparam command="load" file="$(find dmvc_tracke3d)/param/unstructured/10agent.yaml"/>-->
+        <param name="obstacle_configuration_file_name" value="$(find dmvc_tracker3d)/world/unstructured/obstacle_configuration_10agent.txt"/>
+        <param name="object_history_file_name" value="$(find dmvc_tracker3d)/world/unstructured/target_history_10agent.csv"/>
+<!--        <param name="initial_state_file_name" value="$(find dmvc_tracker3d)/world/unstructured_sc1/initial_trajectory_sc1.txt"/>-->
+    </node>
+</launch>
