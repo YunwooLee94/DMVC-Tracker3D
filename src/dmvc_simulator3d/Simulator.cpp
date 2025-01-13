@@ -86,6 +86,7 @@ dmvc3d::Simulator::Simulator(): nh_("~") {
     target_vis_.pose.orientation.z = 0.0;
 
     point_cloud_.header.frame_id = map_frame_id_;
+    point_cloud_range_.header.frame_id = map_frame_id_;
 
     target_vis_publisher_ = nh_.advertise<visualization_msgs::Marker>("target_vis", 1);
     obstacle_list_vis_publisher_ = nh_.advertise<visualization_msgs::MarkerArray>("obstacle_list_vis", 1);
@@ -114,6 +115,7 @@ void dmvc3d::Simulator::Run() {
     while(ros::ok()){
         t_sim = ros::Time::now().toSec()-t0;
         UpdateDynamics(t_sim);
+        ProcessPointCloud();
         PrepareRosMsgs(t_sim);
         PublishRosMsgs();
         ros::spinOnce();
@@ -399,8 +401,8 @@ void dmvc3d::Simulator::PrepareRosMsgs(const double &t) {
 void dmvc3d::Simulator::PublishRosMsgs() {
     if(not pcl_boxes_vis_.markers.empty())
         pcl_boxes_vis_publisher_.publish(pcl_boxes_vis_);
-    if(not point_cloud_.empty())
-        pcl_publisher_.publish(point_cloud_);
+    if(not point_cloud_range_.points.empty())
+        pcl_publisher_.publish(point_cloud_range_);
     tracker_list_vis_publisher_.publish(tracker_list_vis_);
     obstacle_list_vis_publisher_.publish(obstacle_list_vis_);
     target_vis_publisher_.publish(target_vis_);
@@ -445,4 +447,12 @@ void dmvc3d::Simulator::ShuffleScenario() {
 
 void dmvc3d::Simulator::control_input_callback(const dmvc_tracker3d::ControlInputList &msg) {
 
+}
+
+void dmvc3d::Simulator::ProcessPointCloud() {
+    point_cloud_range_.points.clear();
+    for(int i=0;i<point_cloud_.points.size();i++){
+        if(abs(point_cloud_.points[i].x-current_target_state_.px)< 5.0 and abs(point_cloud_.points[i].y-current_target_state_.py)< 5.0)
+            point_cloud_range_.points.push_back(point_cloud_.points[i]);
+    }
 }

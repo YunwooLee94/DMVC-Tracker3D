@@ -1,0 +1,9 @@
+map_frame_id: map
+simulation_dt: 0.005
+is_unstructured: true
+agent_size: 0.075
+total_object_number_in_file: 1
+obstacle_idx_list: []
+inflation_size: 0.5
+point_resolution: 0.2
+target_idx: 0
