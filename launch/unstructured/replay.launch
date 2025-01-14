@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="rviz_display" default="true"/>
+    <group if = "$(arg rviz_display)">
+        <node name="rviz" pkg="rviz" type="rviz" args="-d $(find dmvc_tracker3d)/launch/rviz_config/unstructured.rviz" output="log"/>
+    </group>
+    <node pkg="dmvc_tracker3d" type="dmvc_total3d" name="dmvc_total3d" output="screen">
+        <param name="num_obstacle" value="0"/>
+        <param name="num_target" value="1"/>
+        <param name="num_tracker" value="4"/>
+        <param name="file_name" value="$(find dmvc_tracker3d)/log/unstructured_sim_state_history.txt"/>
+        <param name="obstacle_configuration_file_name" value="$(find dmvc_tracker3d)/world/unstructured/obstacle_configuration_10agent.txt"/>
+<!--        <param name="baseline_file_name" value="$(find dmvc_tracker)/log/ego_planner_sim_unstructured_2.txt"/>-->
+    </node>
+</launch>

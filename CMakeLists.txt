@@ -48,3 +48,6 @@ target_link_libraries(dmvc_predictor3d ${catkin_LIBRARIES} -lstdc++fs)
 
 add_executable(dmvc_tracker3d exe/main_tracker3d.cpp ${DMVC_TRACKER3D_SRC} ${DMVC_UTILS_SRC})
 target_link_libraries(dmvc_tracker3d ${catkin_LIBRARIES} -lstdc++fs)
+
+add_executable(dmvc_total3d exe/main_total3d.cpp src/dmvc_replay3d/TotalTrajReader.cpp)
+target_link_libraries(dmvc_total3d ${catkin_LIBRARIES} -lstdc++fs)
