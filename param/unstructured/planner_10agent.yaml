@@ -1,12 +1,12 @@
 control_frequency: 100.0
-planning_frequency: 20.0
+planning_frequency: 50.0
 horizon: 1.0
 num_thread: 4
 num_sample_planning: 1000
 r_min: 0.8
 r_max: 1.2
 elevation_range: 0.2
-safe_distance: 0.1
+safe_distance: 0.05
 distance_max: 2.0
 terminal_weight: 10.0
 vel_max: 5.0

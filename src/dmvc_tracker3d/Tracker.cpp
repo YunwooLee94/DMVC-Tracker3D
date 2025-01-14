@@ -22,7 +22,6 @@ bool dmvc3d::Tracker::Plan(const double &t_trigger) {
         }
     }
     if (pass_test1) {
-//        cout<<"INTER SAFETY"<<endl;
         GetInterSafetyIndex();
         CalculateMovingBufferedVoronoiCell();
     } else
@@ -34,19 +33,18 @@ bool dmvc3d::Tracker::Plan(const double &t_trigger) {
             printf("AT TIME %f [s], %d-th TRACKER FAIL DUE TO INTER-COLLISION\n", t_trigger, idx);
         }
     }
-//    if (pass_test2) {
-////        cout<<"INTER VISIBILITY"<<endl;
-//        GetInterVisibleIndex();
-//    } else
-//        return false;
-//    bool pass_test3 = true;
-//    for (int idx = 0; idx < num_tracker_; idx++) {
-//        if (inter_visible_index_[idx].empty()) {
-//            pass_test3 = false;
-//            printf("AT TIME %f [s], %d-th TRACKER FAIL DUE TO INTER-OCCLUSION\n", t_trigger, idx);
-//        }
-//    }
-    if (pass_test2){
+    if (pass_test2) {
+        GetInterVisibleIndex();
+    } else
+        return false;
+    bool pass_test3 = true;
+    for (int idx = 0; idx < num_tracker_; idx++) {
+        if (inter_visible_index_[idx].empty()) {
+            pass_test3 = false;
+            printf("AT TIME %f [s], %d-th TRACKER FAIL DUE TO INTER-OCCLUSION\n", t_trigger, idx);
+        }
+    }
+    if (pass_test3){
         GetDynamicallyFeasibleIndex();
     }
     else
@@ -265,7 +263,6 @@ void dmvc3d::Tracker::GetSafeIndex() {
 
 void dmvc3d::Tracker::GetDynamicallyFeasibleIndex() {
     dynamically_feasible_index_.clear();
-    inter_visible_index_ = inter_safe_index_;
     for (int idx = 0; idx < num_tracker_; idx++) {
         int num_chunk = inter_visible_index_[idx].size() / param_.num_thread;
         vector<thread> worker_thread;
@@ -529,11 +526,11 @@ void dmvc3d::Tracker::UpdateResultToBase(const bool &is_success) {
             p_base_->SetMovingBufferedVoronoiCell(moving_buffered_voroni_cell_);
             p_base_->mutex_set_[1].unlock();
         }
-//        {   // Visibility Cell
-//            p_base_->mutex_set_[1].lock();
-//            p_base_->SetVisibilityCell(visibility_cell_);
-//            p_base_->mutex_set_[1].unlock();
-//        }
+        {   // Visibility Cell
+            p_base_->mutex_set_[1].lock();
+            p_base_->SetVisibilityCell(visibility_cell_);
+            p_base_->mutex_set_[1].unlock();
+        }
         {
             p_base_->mutex_set_[1].lock();
             p_base_->SetCorridorVis(polys_);

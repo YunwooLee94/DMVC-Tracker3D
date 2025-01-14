@@ -58,12 +58,17 @@ void dmvc3d::RosWrapper::PublishRosMsgs() {
         p_base_->mutex_set_[1].unlock();
     }
 //    cout<<"6666666666666"<<endl;
-//    {   // Visibility Cell
-//        p_base_->mutex_set_[1].lock();
-//        if(p_base_->success_flag_)
-//            visibility_cell_publisher_.publish(visualizer_->VisualizeVisibilityCell(p_base_->visibility_cell_));
-//        p_base_->mutex_set_[1].unlock();
-//    }
+    {   // Visibility Cell
+
+        p_base_->mutex_set_[1].lock();
+        if(p_base_->success_flag_){
+//            cout<<"AAAAAAA"<<endl;
+            visibility_cell_publisher_.publish(visualizer_->VisualizeVisibilityCell(p_base_->visibility_cell_));
+//            cout<<"BBBBBBBB"<<endl;
+        }
+        p_base_->mutex_set_[1].unlock();
+
+    }
 //    cout<<"77777777777"<<endl;
 //    {   // Corridor
 //        p_base_->mutex_set_[1].lock();

@@ -469,11 +469,9 @@ visualization_msgs::MarkerArray dmvc3d::PlanningVisualizer::VisualizeVisibilityC
     if (visibility_cell.empty())
         return visual_output;
     int num_tracker = visibility_cell.size();
-//    cout<<"VISIBILITY CELL: "<<visibility_cell.size()<<endl;
     for (int tracker_idx = 0; tracker_idx < num_tracker; tracker_idx++) {
         Vec3List vertices = GetFeasibleVertices(visibility_cell[tracker_idx]);
-//        cout<<tracker_idx<<"-th agent's cell Vertices Check"<<endl;
         visual_output.markers.push_back(VisualizeConvexHull(vertices, tracker_idx, MOVING_VISIBILITY_CELL));
-//        cout<<tracker_idx<<"-th agent's cell ConvexHullMaking"<<endl;
     }
+    return visual_output;
 }
