@@ -24,7 +24,7 @@ Panels:
   - Class: rviz/Time
     Name: Time
     SyncMode: 0
-    SyncSource: ObstalcePCL
+    SyncSource: ""
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
@@ -74,7 +74,7 @@ Visualization Manager:
           Marker Topic: /dmvc_simulator3d/pcl_boxes
           Name: ObstacleVolume
           Namespaces:
-            PCL_OBSTACLE: true
+            {}
           Queue Size: 100
           Value: true
         - Alpha: 1
@@ -112,7 +112,7 @@ Visualization Manager:
       Marker Topic: /dmvc_simulator3d/target_vis
       Name: Target
       Namespaces:
-        Target: true
+        {}
       Queue Size: 100
       Value: true
     - Class: rviz/MarkerArray
@@ -120,7 +120,7 @@ Visualization Manager:
       Marker Topic: /dmvc_simulator3d/tracker_list_vis
       Name: TrackerList
       Namespaces:
-        Tracker: true
+        {}
       Queue Size: 100
       Value: true
     - Class: rviz/Group
@@ -152,7 +152,7 @@ Visualization Manager:
           Marker Topic: /dmvc_predictor3d/TargetBestPrimitive
           Name: TargetBest
           Namespaces:
-            TARGET_BEST: true
+            {}
           Queue Size: 100
           Value: true
         - Class: rviz/MarkerArray
@@ -184,10 +184,7 @@ Visualization Manager:
       Marker Topic: /dmvc_tracker3d/raw_primitive
       Name: MarkerArray
       Namespaces:
-        TRACKER_RAW_0: true
-        TRACKER_RAW_1: true
-        TRACKER_RAW_2: true
-        TRACKER_RAW_3: true
+        {}
       Queue Size: 100
       Value: true
     - Class: rviz/MarkerArray
@@ -206,6 +203,38 @@ Visualization Manager:
         {}
       Queue Size: 100
       Value: false
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: /dmvc_total3d/target_path_vis
+      Name: TargetTotalPath
+      Namespaces:
+        TARGET_PATH_VIS: true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: /dmvc_total3d/tracker_path_vis
+      Name: TrackerTotalPath
+      Namespaces:
+        TRACKER_PATH_VIS: true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /dmvc_total3d/bearing_vector_vis
+      Name: BearingVector
+      Namespaces:
+        BEARING_HISTORY_VIS: true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: /dmvc_total3d/pcl_boxes
+      Name: PclBoxes
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 255; 255; 255

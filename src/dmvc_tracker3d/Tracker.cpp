@@ -57,7 +57,6 @@ bool dmvc3d::Tracker::Plan(const double &t_trigger) {
         }
     }
     if (pass_test4){
-//        cout<<"BEST INDEX"<<endl;
         GetBestIndex();
     }
 
