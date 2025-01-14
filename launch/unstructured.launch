@@ -15,4 +15,9 @@
         <rosparam command="load" file="$(find dmvc_tracker3d)/param/unstructured/prediction_visualizer_10agent.yaml"/>
         <rosparam command="load" file="$(find dmvc_tracker3d)/param/unstructured/predictor_10agent.yaml"/>
     </node>
+
+    <node pkg="dmvc_tracker3d" type="dmvc_tracker3d" name="dmvc_tracker3d" output="screen">
+        <rosparam command="load" file="$(find dmvc_tracker3d)/param/unstructured/planning_visualizer_10agent.yaml"/>
+        <rosparam command="load" file="$(find dmvc_tracker3d)/param/unstructured/planner_10agent.yaml"/>
+    </node>
 </launch>

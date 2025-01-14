@@ -9,7 +9,7 @@ raw_primitives:
   color_g: 0.0
   color_b: 0.0
 feasible_primitives:
-  publish: true
+  publish: false
   num_time_sample: 10
   proportion: 0.2
   line_scale: 0.02

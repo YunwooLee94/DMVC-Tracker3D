@@ -128,7 +128,7 @@ Visualization Manager:
         - Alpha: 0.20000000298023224
           BoundColor: 255; 0; 0
           Class: decomp_rviz_plugins/PolyhedronArray
-          Enabled: true
+          Enabled: false
           MeshColor: 255; 0; 255
           Name: TargetCorridor
           Queue Size: 10
@@ -136,7 +136,7 @@ Visualization Manager:
           State: Mesh
           Topic: /dmvc_predictor3d/corridor
           Unreliable: false
-          Value: true
+          Value: false
           VsColor: 0; 255; 0
           VsScale: 1
         - Class: rviz/MarkerArray
@@ -165,6 +165,47 @@ Visualization Manager:
           Value: true
       Enabled: true
       Name: Target
+    - Alpha: 0.20000000298023224
+      BoundColor: 255; 0; 0
+      Class: decomp_rviz_plugins/PolyhedronArray
+      Enabled: false
+      MeshColor: 0; 170; 255
+      Name: PolyhedronArray
+      Queue Size: 10
+      Scale: 0.10000000149011612
+      State: Mesh
+      Topic: /dmvc_tracker3d/corridor
+      Unreliable: false
+      Value: false
+      VsColor: 0; 255; 0
+      VsScale: 1
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: /dmvc_tracker3d/raw_primitive
+      Name: MarkerArray
+      Namespaces:
+        TRACKER_RAW_0: true
+        TRACKER_RAW_1: true
+        TRACKER_RAW_2: true
+        TRACKER_RAW_3: true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/MarkerArray
+      Enabled: false
+      Marker Topic: /dmvc_tracker3d/buffered_voronoi_cell
+      Name: DBVC
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: false
+    - Class: rviz/MarkerArray
+      Enabled: false
+      Marker Topic: /dmvc_tracker3d/visibility_cell
+      Name: DIVC
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: false
   Enabled: true
   Global Options:
     Background Color: 255; 255; 255
@@ -193,7 +234,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 28.00699806213379
+      Distance: 29.4954891204834
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -201,17 +242,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 14.345023155212402
-        Y: 11.595698356628418
-        Z: -0.21914243698120117
+        X: 15.168550491333008
+        Y: 11.558124542236328
+        Z: -0.3200278878211975
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.6347967982292175
+      Pitch: 0.6047970056533813
       Target Frame: <Fixed Frame>
-      Yaw: 5.368178844451904
+      Yaw: 5.428180694580078
     Saved: ~
 Window Geometry:
   Displays:
