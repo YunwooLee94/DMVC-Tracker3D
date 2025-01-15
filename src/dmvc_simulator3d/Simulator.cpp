@@ -27,6 +27,7 @@ dmvc3d::Simulator::Simulator(): nh_("~") {
     nh_.param<int>("target_idx", target_idx_, 0);
 //    target_idx_ = 0; // Analysis
     object_idx_list_.push_back(target_idx_);
+    cout<<"TARGET IDX: "<<target_idx_<<endl;
     object_number_ = (int) object_idx_list_.size(); // obstacles + target
     nh_.param<string>("initial_state_file_name", initial_state_file_name_, "");
     nh_.param<string>("object_history_file_name", object_history_file_name_, "");
@@ -415,7 +416,7 @@ void dmvc3d::Simulator::UpdateDynamics(const double &t) {
     current_obstacle_state_list_.clear();
     State temp_state;
     for (int i = 0; i < object_number_; i++) {
-        if(i==target_idx_){
+        if(object_idx_list_[i]==target_idx_){
             current_target_state_.px = dmvc3d::interpolate(object_history_list_[i].t,
                                                          object_history_list_[i].px, t);
             current_target_state_.py = dmvc3d::interpolate(object_history_list_[i].t,
@@ -428,6 +429,7 @@ void dmvc3d::Simulator::UpdateDynamics(const double &t) {
                                                          object_history_list_[i].vy, t);
             current_target_state_.vz = dmvc3d::interpolate(object_history_list_[i].t,
                                                          object_history_list_[i].vz, t);
+//            cout<<"PX: "<<current_target_state_.px<<", PY: "<<current_target_state_.py<<", PZ: "<<current_target_state_.pz<<endl;
         }
         else{
             temp_state.px = dmvc3d::interpolate(object_history_list_[i].t, object_history_list_[i].px, t);

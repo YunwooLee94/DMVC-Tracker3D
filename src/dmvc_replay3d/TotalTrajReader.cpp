@@ -77,7 +77,7 @@ void dmvc3d::TotalTrajReader::ReadTotalTrajectory() {
         tracker_path_list[i].pose.orientation.y = 0.0;
         tracker_path_list[i].pose.orientation.z = 0.0;
     }
-    for(int i=0;i<num_obstacle_;i++){ // TRACKER
+    for(int i=0;i<num_obstacle_;i++){ // OBSTACLE
         obstacle_path_list[i].header.frame_id="map";
         obstacle_path_list[i].color.a = 0.5;
         obstacle_path_list[i].color.r = 0.0;
