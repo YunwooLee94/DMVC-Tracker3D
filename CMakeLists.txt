@@ -54,3 +54,6 @@ target_link_libraries(dmvc_total3d ${catkin_LIBRARIES} -lstdc++fs)
 
 add_executable(dmvc_replay3d exe/main_replay3d.cpp src/dmvc_replay3d/Replayer.cpp)
 target_link_libraries(dmvc_replay3d ${catkin_LIBRARIES} -lstdc++fs)
+
+add_executable(dmvc_camera_tf3d exe/main_camera_tf3d.cpp src/dmvc_camera_tf3d/CameraTfPublisher.cpp)
+target_link_libraries(dmvc_camera_tf3d ${catkin_LIBRARIES} -lstdc++fs)

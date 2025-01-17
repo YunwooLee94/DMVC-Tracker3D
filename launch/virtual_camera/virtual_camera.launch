@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<launch>
+    <node pkg="dmvc_tracker3d" name="dmvc_camera_tf3d" type="dmvc_camera_tf3d" output="screen"/>
+    <group ns="camera0">
+        <node name="camera_info" pkg="rostopic" type="rostopic"
+              args="pub camera_info sensor_msgs/CameraInfo
+     '{header: {seq: 0, stamp: {secs: 0, nsecs: 0}, frame_id: 'camera0'},
+      height: 720, width: 1280, distortion_model: 'plumb_bob',
+      D: [0],
+      K: [300.0, 0.0, 640, 0.0, 300.0, 360.0, 0.0, 0.0, 1.0],
+      R: [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0],
+      P: [400.0, 0.0, 640, 0.0, 0.0, 400, 360, 0.0, 0.0, 0.0, 1.0, 0.0],
+      binning_x: 0, binning_y: 0,
+      roi: {x_offset: 0, y_offset: 0, height: 720, width: 1280, do_rectify: true}}' -r 2"
+              output="screen"/>
+    </group>
+    <group ns="camera1">
+        <node name="camera_info" pkg="rostopic" type="rostopic"
+              args="pub camera_info sensor_msgs/CameraInfo
+     '{header: {seq: 0, stamp: {secs: 0, nsecs: 0}, frame_id: 'camera1'},
+      height: 720, width: 1280, distortion_model: 'plumb_bob',
+      D: [0],
+      K: [600.0, 0.0, 640, 0.0, 600.0, 360.0, 0.0, 0.0, 1.0],
+      R: [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0],
+      P: [400.0, 0.0, 640, 0.0, 0.0, 400.0, 360, 0.0, 0.0, 0.0, 1.0, 0.0],
+      binning_x: 0, binning_y: 0,
+      roi: {x_offset: 0, y_offset: 0, height: 720, width: 1280, do_rectify: true}}' -r 2"
+              output="screen"/>
+    </group>
+    <group ns="camera2">
+        <node name="camera_info" pkg="rostopic" type="rostopic"
+              args="pub camera_info sensor_msgs/CameraInfo
+     '{header: {seq: 0, stamp: {secs: 0, nsecs: 0}, frame_id: 'camera2'},
+      height: 720, width: 1280, distortion_model: 'plumb_bob',
+      D: [0],
+      K: [300.0, 0.0, 640, 0.0, 300.0, 360.0, 0.0, 0.0, 1.0],
+      R: [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0],
+      P: [400.0, 0.0, 640, 0.0, 0.0, 400, 360, 0.0, 0.0, 0.0, 1.0, 0.0],
+      binning_x: 0, binning_y: 0,
+      roi: {x_offset: 0, y_offset: 0, height: 720, width: 1280, do_rectify: true}}' -r 2"
+              output="screen"/>
+    </group>
+    <group ns="camera3">
+        <node name="camera_info" pkg="rostopic" type="rostopic"
+              args="pub camera_info sensor_msgs/CameraInfo
+     '{header: {seq: 0, stamp: {secs: 0, nsecs: 0}, frame_id: 'camera3'},
+      height: 720, width: 1280, distortion_model: 'plumb_bob',
+      D: [0],
+      K: [300.0, 0.0, 640, 0.0, 300.0, 360.0, 0.0, 0.0, 1.0],
+      R: [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0],
+      P: [400.0, 0.0, 640, 0.0, 0.0, 400, 360, 0.0, 0.0, 0.0, 1.0, 0.0],
+      binning_x: 0, binning_y: 0,
+      roi: {x_offset: 0, y_offset: 0, height: 720, width: 1280, do_rectify: true}}' -r 2"
+              output="screen"/>
+    </group>
+</launch>

@@ -2,7 +2,7 @@
 <launch>
     <arg name="rviz_display" default="true"/>
     <group if = "$(arg rviz_display)">
-        <node name="rviz" pkg="rviz" type="rviz" args="-d $(find dmvc_tracker3d)/launch/rviz_config/dynamic_obstacle.rviz" output="log"/>
+        <node name="rviz" pkg="rviz" type="rviz" args="-d $(find dmvc_tracker3d)/launch/rviz_config/dynamic_obstacle_camera.rviz" output="log"/>
     </group>
     <arg name="play_bag" default="true"/>
     <arg name="bag_file_name" default="$(find dmvc_tracker3d)/world/dynamic_obstacle/recorded_object_history.bag"/>
