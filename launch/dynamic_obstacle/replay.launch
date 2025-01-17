@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="rviz_display" default="true"/>
+    <group if = "$(arg rviz_display)">
+        <node name="rviz" pkg="rviz" type="rviz" args="-d $(find dmvc_tracker3d)/launch/rviz_config/dynamic_obstacle.rviz" output="log"/>
+    </group>
+    <arg name="play_bag" default="true"/>
+    <arg name="bag_file_name" default="$(find dmvc_tracker3d)/world/dynamic_obstacle/recorded_object_history.bag"/>
+    <group if="$(arg play_bag)">
+        <node name="ros_bag_play" pkg="rosbag" type="play" args="--clock -r 1.0 -s 0.0 $(arg bag_file_name)"/>
+    </group>
+    <node pkg="dmvc_tracker3d" type="dmvc_total3d" name="dmvc_total3d" output="screen">
+        <param name="num_obstacle" value="100"/>
+        <param name="num_target" value="1"/>
+        <param name="num_tracker" value="4"/>
+        <param name="file_name" value="$(find dmvc_tracker3d)/log/dynamic_obstacle_sim_history.txt"/>
+    </node>
+    <node pkg="dmvc_tracker3d" type="dmvc_replay3d" name="dmvc_replay3d" output="screen">
+<!--        <param name="state_history_file_name" value="$(find dmvc_tracker3d)/log/dynamic_obstacle_sim_history.txt"/>-->
+        <param name="is_dynamic_experiment" value="true"/>
+        <param name="do_logging" value="false"/>
+    </node>
+<!--    <include file="$(find dmvc_tracker3d)/launch/virtual_camera/virtual_camera.launch">-->
+<!--    </include>-->
+</launch>

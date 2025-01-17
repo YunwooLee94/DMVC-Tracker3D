@@ -170,7 +170,7 @@ void dmvc3d::Tracker::SampleEndPointThread(const int &tracker_idx, const int &st
     std::uniform_real_distribution<> elev_dis(-param_.elevation_range, param_.elevation_range);
     double center_angle = std::atan2(current_tracker_state_[tracker_idx].py - target_trajectory_.ctrl_y[3],
                                      current_tracker_state_[tracker_idx].px - target_trajectory_.ctrl_x[3]);
-    double half_range = 1.0 * M_PI;
+    double half_range = 1.333333 * M_PI;
     std::uniform_real_distribution<> theta_dis(center_angle - half_range, center_angle + half_range);
 
     double r, theta, elevation;
@@ -332,14 +332,14 @@ void dmvc3d::Tracker::GetDynamicallyFeasibleIndexThread(const int &tracker_idx, 
         flag_store_velocity = true;
         for (int i = 0; i < 3; i++) {
             vel_x[i] = 3.0 * T_inv *
-                       (primitive_[tracker_idx][inter_visible_index_[tracker_idx][start_idx]].ctrl_x[i + 1] -
-                        primitive_[tracker_idx][inter_visible_index_[tracker_idx][start_idx]].ctrl_x[i]);
+                       (primitive_[tracker_idx][inter_visible_index_[tracker_idx][idx]].ctrl_x[i + 1] -
+                        primitive_[tracker_idx][inter_visible_index_[tracker_idx][idx]].ctrl_x[i]);
             vel_y[i] = 3.0 * T_inv *
-                       (primitive_[tracker_idx][inter_visible_index_[tracker_idx][start_idx]].ctrl_y[i + 1] -
-                        primitive_[tracker_idx][inter_visible_index_[tracker_idx][start_idx]].ctrl_y[i]);
+                       (primitive_[tracker_idx][inter_visible_index_[tracker_idx][idx]].ctrl_y[i + 1] -
+                        primitive_[tracker_idx][inter_visible_index_[tracker_idx][idx]].ctrl_y[i]);
             vel_z[i] = 3.0 * T_inv *
-                       (primitive_[tracker_idx][inter_visible_index_[tracker_idx][start_idx]].ctrl_z[i + 1] -
-                        primitive_[tracker_idx][inter_visible_index_[tracker_idx][start_idx]].ctrl_z[i]);
+                       (primitive_[tracker_idx][inter_visible_index_[tracker_idx][idx]].ctrl_z[i + 1] -
+                        primitive_[tracker_idx][inter_visible_index_[tracker_idx][idx]].ctrl_z[i]);
         }
         for (int j = 0; j <= 4; j++) {
             value = 0.0;
@@ -358,17 +358,17 @@ void dmvc3d::Tracker::GetDynamicallyFeasibleIndexThread(const int &tracker_idx, 
         flag_store_acceleration = true;
         for (int i = 0; i < 2; i++) {
             acc_x[i] = 6.0 * T2_inv *
-                       (primitive_[tracker_idx][inter_visible_index_[tracker_idx][start_idx]].ctrl_x[i + 2] -
-                        2 * primitive_[tracker_idx][inter_visible_index_[tracker_idx][start_idx]].ctrl_x[i + 1] +
-                        primitive_[tracker_idx][inter_visible_index_[tracker_idx][start_idx]].ctrl_x[i]);
+                       (primitive_[tracker_idx][inter_visible_index_[tracker_idx][idx]].ctrl_x[i + 2] -
+                        2 * primitive_[tracker_idx][inter_visible_index_[tracker_idx][idx]].ctrl_x[i + 1] +
+                        primitive_[tracker_idx][inter_visible_index_[tracker_idx][idx]].ctrl_x[i]);
             acc_y[i] = 6.0 * T2_inv *
-                       (primitive_[tracker_idx][inter_visible_index_[tracker_idx][start_idx]].ctrl_y[i + 2] -
-                        2 * primitive_[tracker_idx][inter_visible_index_[tracker_idx][start_idx]].ctrl_y[i + 1] +
-                        primitive_[tracker_idx][inter_visible_index_[tracker_idx][start_idx]].ctrl_y[i]);
+                       (primitive_[tracker_idx][inter_visible_index_[tracker_idx][idx]].ctrl_y[i + 2] -
+                        2 * primitive_[tracker_idx][inter_visible_index_[tracker_idx][idx]].ctrl_y[i + 1] +
+                        primitive_[tracker_idx][inter_visible_index_[tracker_idx][idx]].ctrl_y[i]);
             acc_z[i] = 6.0 * T2_inv *
-                       (primitive_[tracker_idx][inter_visible_index_[tracker_idx][start_idx]].ctrl_z[i + 2] -
-                        2 * primitive_[tracker_idx][inter_visible_index_[tracker_idx][start_idx]].ctrl_z[i + 1] +
-                        primitive_[tracker_idx][inter_visible_index_[tracker_idx][start_idx]].ctrl_z[i]);
+                       (primitive_[tracker_idx][inter_visible_index_[tracker_idx][idx]].ctrl_z[i + 2] -
+                        2 * primitive_[tracker_idx][inter_visible_index_[tracker_idx][idx]].ctrl_z[i + 1] +
+                        primitive_[tracker_idx][inter_visible_index_[tracker_idx][idx]].ctrl_z[i]);
         }
         for (int j = 0; j <= 2; j++) {
             value = 0.0;

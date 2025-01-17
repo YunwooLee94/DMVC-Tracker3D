@@ -38,7 +38,7 @@ file(GLOB DMVC_SIMULATOR3D_SRC src/dmvc_simulator3d/*.cpp)
 #
 file(GLOB DMVC_PREDICTOR3D_SRC src/dmvc_predictor3d/Predictor.cpp src/dmvc_predictor3d/PredictionVisualizer.cpp)
 file(GLOB DMVC_TRACKER3D_SRC src/dmvc_tracker3d/PlannerBase.cpp src/dmvc_tracker3d/Tracker.cpp src/dmvc_tracker3d/PlanningVisualizer.cpp src/dmvc_tracker3d/RosWrapper.cpp src/dmvc_tracker3d/Wrapper.cpp)
-#file(GLOB DMVC_REPLAYER_SRC src/dmvc_replay/Replayer.cpp)
+file(GLOB DMVC_REPLAYER3D_SRC src/dmvc_replay3d/Replayer.cpp)
 
 add_executable(dmvc_simulator3d exe/main_simulator3d.cpp ${DMVC_SIMULATOR3D_SRC} ${DMVC_UTILS_SRC})
 target_link_libraries(dmvc_simulator3d ${catkin_LIBRARIES} -lstdc++fs)
@@ -51,3 +51,9 @@ target_link_libraries(dmvc_tracker3d ${catkin_LIBRARIES} -lstdc++fs)
 
 add_executable(dmvc_total3d exe/main_total3d.cpp src/dmvc_replay3d/TotalTrajReader.cpp)
 target_link_libraries(dmvc_total3d ${catkin_LIBRARIES} -lstdc++fs)
+
+add_executable(dmvc_replay3d exe/main_replay3d.cpp src/dmvc_replay3d/Replayer.cpp)
+target_link_libraries(dmvc_replay3d ${catkin_LIBRARIES} -lstdc++fs)
+
+add_executable(dmvc_camera_tf3d exe/main_camera_tf3d.cpp src/dmvc_camera_tf3d/CameraTfPublisher.cpp)
+target_link_libraries(dmvc_camera_tf3d ${catkin_LIBRARIES} -lstdc++fs)

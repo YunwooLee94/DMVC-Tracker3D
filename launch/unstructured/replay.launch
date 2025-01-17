@@ -12,4 +12,6 @@
         <param name="obstacle_configuration_file_name" value="$(find dmvc_tracker3d)/world/unstructured/obstacle_configuration_10agent.txt"/>
 <!--        <param name="baseline_file_name" value="$(find dmvc_tracker)/log/ego_planner_sim_unstructured_2.txt"/>-->
     </node>
+    <include file="$(find dmvc_tracker3d)/launch/virtual_camera/virtual_camera.launch">
+    </include>
 </launch>
